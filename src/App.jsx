@@ -59,14 +59,14 @@ function App() {
     feedback = null;
   }
   else if(guessCorrect){
-    feedback = (<div>
-                  <p>CORRRRECT!</p>
+    feedback = (<div className="feedback">
+                  <p className="correct">CORRRRECT!</p>
                   <button onClick={changePokemon}>Next Pokemon</button>
                 </div>);
   }
   else if(!guessCorrect){
-    feedback=(      <div>
-          <p>WrOnG</p>
+    feedback=(      <div className="feedback">
+          <p className="wrong">WrOnG</p>
           <GameOver 
           answer={answer} 
           streak={lastStreak}
@@ -117,8 +117,8 @@ function App() {
 
       
       
-      <p>{feedback}</p>
-      {streak === 0 ? null : <p>Streak: {streak}</p>}
+      <div>{feedback}</div>
+      {streak === 0 ? null : <p className="streak">Streak: {streak}</p>}
          
     </>
   )

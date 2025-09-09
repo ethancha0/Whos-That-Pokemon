@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import styles from './Input.module.css';
 
 function Input({onSubmitGuess}){
 
@@ -12,19 +13,20 @@ function Input({onSubmitGuess}){
 
     return(
 
-        <div>
+        <div className={styles.inputContainer}>
 
             <input 
             type="text" 
             placeholder="Guess Here"
-            id='userInput'
+            className={styles.inputField}
             value = {guess}
             onChange={(e) => setGuess(e.target.value)} // update state
+            onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
             />
              
 
 
-            <button id='submit-btn' onClick={handleSubmit}>Submit</button>
+            <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
             
         </div>
 

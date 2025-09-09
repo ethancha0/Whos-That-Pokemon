@@ -31,11 +31,11 @@ function SpriteRNG({onAnswer, refreshKey, reveal}){
    
 
     return(
-        <div>
+        <div className={styles.spriteContainer}>
             
             {pokemon ? 
             (<img className = {reveal ? styles.normal :  styles.silhouette} src = {pokemon.sprites.front_default}/>) :
-            (<p>Pokemon Loading...</p>)}
+            (<p className={styles.loading}>Pokemon Loading...</p>)}
             
         </div>
        
