@@ -1,0 +1,7 @@
+body{
+    background-color: gray;
+}
+
+p, h1, h2{
+    font-family: monospace;
+}
