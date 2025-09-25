@@ -86,6 +86,7 @@ function App() {
   //Saves user data into leaderboard
   function HandleSave(userName, streak){
     console.log([userName, streak])
+    sendScore(userName, streak)
   }
 
   //resets game 
@@ -97,6 +98,32 @@ function App() {
     setNewPokemon(false);
     setRefreshKey(prev => prev + 1);
   }
+
+  //trying to send to server
+ function sendScore(username, score) {
+  console.log(`Sending score: ${username} - ${score}`);
+  return fetch("http://127.0.0.1:5000/submit_scores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ username: username, score: score })
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Saved:", data);
+    })
+    .catch((err) => {
+      console.error("Error saving score:", err);
+      alert(`Failed to save score: ${err.message}`);
+    });
+}
+
 
   return (
     <>
